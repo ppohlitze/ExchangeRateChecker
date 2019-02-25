@@ -5,13 +5,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Rates {
 
     @JsonProperty("USD")
-    private double rate;
+    private String usd;
 
-    public double getRate() {
-        return rate;
+    public String getUsd() {
+        return usd;
     }
 
-    public void setRate(double rate) {
-        this.rate = rate;
+    public void setUsd(String usd) {
+        this.usd = usd;
+    }
+
+    @Override
+    public String toString() {
+        return "Rates{" +
+                "usd='" + usd + '\'' +
+                '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.example.exchangeRate.services;
 
-import com.example.exchangeRate.dtos.ExchangeRate;
+import com.example.exchangeRate.dtos.Rate;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -21,8 +21,7 @@ public class DatabaseConnectorService {
 
     public void mapExchangeRate(String json) {
         try {
-            ExchangeRate exchangeRate = mapper.readValue(json, ExchangeRate.class);
-            log.info(""+ exchangeRate.getRates().getRate());
+            Rate rate = mapper.readValue(json, Rate.class);
         } catch (MalformedURLException e) {
             log.info("Your URL seems to be malformed!", e);
         } catch (IOException e) {
