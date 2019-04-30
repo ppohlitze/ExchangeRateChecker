@@ -12,10 +12,9 @@ public class RateRowMapper implements RowMapper<Rate> {
     @Override
     public Rate mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        Rate rate = new Rate();
+        Rate rate = new Rate(new Rates(rs.getString("rate")));
 
-        //rate.setDateAndTime(rs.getTimestamp("date_time").valueOf(now.toLocalDateTime).getTime);
-        rate.setRates(new Rates(rs.getString("rate")));
+        rate.setDateAndTime(rs.getTimestamp("date_time").toLocalDateTime());
 
         return rate;
     }

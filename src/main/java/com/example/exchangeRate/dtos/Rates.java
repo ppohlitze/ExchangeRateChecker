@@ -9,6 +9,8 @@ public class Rates implements Serializable {
     @JsonProperty("USD")
     private String usd;
 
+    public Rates() { }
+
     public Rates(String usd) {
         this.usd = usd;
     }

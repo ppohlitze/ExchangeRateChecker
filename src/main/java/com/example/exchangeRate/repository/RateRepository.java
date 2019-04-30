@@ -1,22 +1,21 @@
 package com.example.exchangeRate.repository;
 
 import com.example.exchangeRate.dtos.Rate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
+@Repository
 public class RateRepository {
 
-    private final JdbcTemplate jdbcTemplate;
-
-    public RateRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public void persistRate(Rate rate) {
 
-        //TODO maybe move the sql queries to application properties
         final String sql = "INSERT INTO timestamps_and_rates (date_time, rate) VALUES " +
                 "('"+ rate.getDateAndTime() +"', '"+ rate.getRates().getUsd() +"');";
 

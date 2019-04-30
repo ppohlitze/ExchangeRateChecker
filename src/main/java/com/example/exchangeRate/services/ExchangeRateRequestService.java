@@ -2,9 +2,10 @@ package com.example.exchangeRate.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -13,10 +14,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-@Component
+@Service
 public class ExchangeRateRequestService {
 
-    private static final DatabaseConnectorService dbcs = new DatabaseConnectorService();
+    @Autowired
+    private DatabaseConnectorService dbcs;
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRateRequestService.class);
 
