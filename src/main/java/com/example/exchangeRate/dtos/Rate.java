@@ -2,24 +2,35 @@ package com.example.exchangeRate.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
+import java.time.OffsetDateTime;
 
-public class Rate {
+public class Rate implements Serializable {
 
-    private final LocalDateTime dateAndTime = LocalDateTime.now();
+    private OffsetDateTime dateAndTime = OffsetDateTime.now();
 
     @JsonProperty("rates")
     private Rates rates;
 
-    public LocalDateTime getDateAndTime() {
+    public Rate() {}
+
+    public Rate(Rates rates) {
+        this.rates = rates;
+    }
+
+    public OffsetDateTime getDateAndTime() {
         return dateAndTime;
     }
 
-    public Rates getRates () {
+    public void setDateAndTime(OffsetDateTime dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
+
+    public Rates getRates() {
         return rates;
     }
 
-    public void setRates (Rates rates) {
+    public void setRates(Rates rates) {
         this.rates = rates;
     }
 

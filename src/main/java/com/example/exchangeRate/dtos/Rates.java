@@ -2,10 +2,16 @@ package com.example.exchangeRate.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Rates {
+import java.io.Serializable;
+
+public class Rates implements Serializable {
 
     @JsonProperty("USD")
     private String usd;
+
+    public Rates(String usd) {
+        this.usd = usd;
+    }
 
     public String getUsd() {
         return usd;
