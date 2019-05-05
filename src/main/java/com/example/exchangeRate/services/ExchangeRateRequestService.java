@@ -2,7 +2,6 @@ package com.example.exchangeRate.services;
 
 import com.example.exchangeRate.dtos.Rate;
 import com.example.exchangeRate.repository.RateRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -71,7 +70,6 @@ public class ExchangeRateRequestService {
         try {
 
             Rate rate = mapper.readValue(json, Rate.class);
-
             rateRepository.persistRate(rate);
 
         } catch (IOException e) {
@@ -79,9 +77,8 @@ public class ExchangeRateRequestService {
         }
     }
 
-    public String serializeExchangeRates(Optional<LocalDateTime> startDate, Optional<LocalDateTime> endDate) {
+    public List<Rate> serializeExchangeRates(Optional<LocalDateTime> startDate, Optional<LocalDateTime> endDate) {
 
-        String serializedRates = "";
         List<Rate> rates;
 
         if (!startDate.isPresent() && !endDate.isPresent()) {
@@ -90,12 +87,6 @@ public class ExchangeRateRequestService {
             rates = rateRepository.getRatesInTimeframe(startDate.get(), endDate.get());
         }
 
-        try {
-            serializedRates = mapper.writeValueAsString(rates);
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Something went wrong while serializing the JSON!", e);
-        }
-
-        return serializedRates;
+        return rates;
     }
 }

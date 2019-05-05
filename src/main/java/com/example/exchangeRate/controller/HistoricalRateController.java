@@ -1,5 +1,6 @@
 package com.example.exchangeRate.controller;
 
+import com.example.exchangeRate.dtos.Rate;
 import com.example.exchangeRate.services.ExchangeRateRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,7 +18,7 @@ public class HistoricalRateController {
     private ExchangeRateRequestService exchangeRateRequestService;
 
     @GetMapping("/historical-rate")
-    public String getHistoricalRate(
+    public List<Rate> getHistoricalRate(
                                     @RequestParam("start-date") String startDate,
                                     @RequestParam("end-date") String endDate) {
 
