@@ -13,7 +13,6 @@ public class RateRowMapper implements RowMapper<Rate> {
     public Rate mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Rate rate = new Rate(new Rates(rs.getString("rate")));
-
         rate.setDateAndTime(rs.getTimestamp("date_time").toLocalDateTime());
 
         return rate;
