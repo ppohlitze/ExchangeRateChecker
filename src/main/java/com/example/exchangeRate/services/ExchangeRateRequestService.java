@@ -68,10 +68,8 @@ public class ExchangeRateRequestService {
     public void deserializeExchangeRate(String json) {
 
         try {
-
             Rate rate = mapper.readValue(json, Rate.class);
             rateRepository.persistRate(rate);
-
         } catch (IOException e) {
             LOGGER.info("Something went wrong while mapping the JSON!", e);
         }
