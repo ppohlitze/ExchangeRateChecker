@@ -23,6 +23,7 @@ CREATE TABLE "public"."timestamps_and_rates" (
 * if you want to change the DB / table / column names make sure to adjust the SQL queries
 aswell
 * clone/fork this repo
+* run the project
 
 ## Tech Choices
 
