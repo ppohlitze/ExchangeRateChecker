@@ -1,0 +1,72 @@
+openapi: 3.0.2
+info:
+  title: ExchangeRateChecker API
+  description: API to get exchange rates between euro and usd
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Just your standard localhost
+paths:
+  /health:
+    get:
+      summary: Returns a message indicating whether the service is available.
+      responses:
+        '200':
+          description: Returns "Feeling pretty good rn!" if the service is available.
+          content:
+            application/json:
+              schema:
+                type: string
+  /latest-rate:
+    get:
+      summary: Returns the most recent exchange rate.
+      responses:
+        '200':
+          description: List containing the latest exchange rate
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rate'
+  /historical-rate:
+    get:
+      summary: Returns all exchange rates (if saved in DB) between the two dates.
+      parameters:
+        - name: start-date
+          in: query
+          description: Date from which to search forward. In format yyyy-MM-ddTHH:mm. Works inclusive.
+          required: true
+          schema:
+            type: string
+        - name: end-date
+          in: query
+          description: Date to which to search. In format yyyy-MM-ddTHH:mm. Works exclusive.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of Exchange rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rate'
+components:
+  schemas:
+    Rate:
+      properties:
+        dateAndTime:
+          type: string
+          example: "2019-05-26T12:59:27.014750"
+          description: The date and time the exchange rate was saved into the DB
+        rates:
+          $ref: '#/components/schemas/Rates'
+    Rates:
+      properties:
+        usd:
+          type: string
+          example: "1.1187"
+          description: the exchange rate between euro and usd

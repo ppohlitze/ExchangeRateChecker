@@ -1,4 +1,4 @@
-package com.example.exchangeRate.dtos;
+package com.example.exchangeRateChecker.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

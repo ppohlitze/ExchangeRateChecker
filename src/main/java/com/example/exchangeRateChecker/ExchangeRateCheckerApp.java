@@ -1,4 +1,4 @@
-package com.example.exchangeRate;
+package com.example.exchangeRateChecker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
