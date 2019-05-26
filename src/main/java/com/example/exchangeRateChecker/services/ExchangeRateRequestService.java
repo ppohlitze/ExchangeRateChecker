@@ -1,7 +1,7 @@
-package com.example.exchangeRate.services;
+package com.example.exchangeRateChecker.services;
 
-import com.example.exchangeRate.dtos.Rate;
-import com.example.exchangeRate.repository.RateRepository;
+import com.example.exchangeRateChecker.dtos.Rate;
+import com.example.exchangeRateChecker.repository.RateRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

@@ -1,7 +1,7 @@
-package com.example.exchangeRate.repository;
+package com.example.exchangeRateChecker.repository;
 
-import com.example.exchangeRate.dtos.Rate;
-import com.example.exchangeRate.dtos.Rates;
+import com.example.exchangeRateChecker.dtos.Rate;
+import com.example.exchangeRateChecker.dtos.Rates;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
