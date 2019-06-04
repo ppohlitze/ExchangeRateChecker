@@ -1,9 +1,10 @@
 # ExchangeRateChecker
 
 This is a microservice which pulls the exchange rate from euro to dollar from an API, 
-and writes it to a DB. The exchange rates can be accessed via two REST endpoints. One returns
+and writes it to a DB. The exchange rates can be accessed via two REST endpoints which 
+return a JSON payload. One returns
 the most recent exchange rate and the other returns all exchange rates in between
-two timestamps.
+two timestamps. For further details see the swagger file.
 
 ## How to run
 
@@ -27,8 +28,9 @@ aswell
 
 ## Tech Choices
 
-* Maven for managing libraries, executing tests and building the application
+* Maven and MavenWrapper for managing libraries, executing tests and building the application
 * Spring for dependency injection, DB access, scheduling and so forth
 * Postgres for the DB because its open source, object relational and
 I have some minor experience with it already.
 * JUnit for unit testing
+* Swagger for API documentation
