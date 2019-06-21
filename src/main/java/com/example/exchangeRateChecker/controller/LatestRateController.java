@@ -1,12 +1,11 @@
 package com.example.exchangeRateChecker.controller;
 
-import com.example.exchangeRateChecker.dtos.Rate;
 import com.example.exchangeRateChecker.services.ExchangeRateRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,7 +15,7 @@ public class LatestRateController {
     private ExchangeRateRequestService exchangeRateRequestService;
 
     @GetMapping("/latest-rate")
-    public List<Rate> getLatestRate() {
-        return exchangeRateRequestService.serializeExchangeRates(Optional.empty(), Optional.empty());
+    public ResponseEntity<?> getLatestRate() {
+        return ResponseEntity.ok(exchangeRateRequestService.serializeExchangeRates(Optional.empty(), Optional.empty()));
     }
 }
